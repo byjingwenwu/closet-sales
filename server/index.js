@@ -13,10 +13,27 @@ app.use(sessionMiddleware);
 
 app.use(express.json());
 
+// app.get('/api/health-check', (req, res, next) => {
+//   db.query('select \'successfully connected\' as "message"')
+//     .then(result => res.json(result.rows[0]))
+//     .catch(err => next(err));
+// });
+
 app.get('/api/health-check', (req, res, next) => {
-  db.query('select \'successfully connected\' as "message"')
-    .then(result => res.json(result.rows[0]))
-    .catch(err => next(err));
+  const sql = `
+  SELECT "productId", "name", "price", "image", "shortDescription"
+  FROM "products"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.status(200).json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
 });
 
 app.use('/api', (req, res, next) => {

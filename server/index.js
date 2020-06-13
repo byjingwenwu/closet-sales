@@ -19,7 +19,7 @@ app.use(express.json());
 //     .catch(err => next(err));
 // });
 
-app.get('/api/health-check', (req, res, next) => {
+app.get('/api/products', (req, res, next) => {
   const sql = `
   SELECT "productId", "name", "price", "image", "shortDescription"
   FROM "products"

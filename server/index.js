@@ -28,12 +28,7 @@ app.get('/api/products', (req, res, next) => {
     .then(result => {
       res.status(200).json(result.rows);
     })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'An unexpected error occurred.'
-      });
-    });
+    .catch(err => next(err));
 });
 
 app.get('/api/products/:productId', (req, res, next) => {

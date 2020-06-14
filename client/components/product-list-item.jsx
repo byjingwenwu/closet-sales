@@ -4,7 +4,8 @@ class ProductListItem extends React.Component {
   render() {
     const item = this.props;
     return (
-      <div className="mb-4 item-container" id={`item${item.productId}`}>
+      <div className="mb-4 item-container" id={`item${item.productId}`}
+        onClick={() => item.setView('details', { productId: this.props.productId })}>
         <div className="d-flex flex-column item" id={item.productId}>
           <img className="item-img" src={item.image} alt={item.name} />
           <h4>{item.name}</h4>

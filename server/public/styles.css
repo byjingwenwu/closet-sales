@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+  background-color: #e9ecef;
+}
+
 .header {
   background-color: #3a506b;
   color: white;
@@ -43,6 +48,39 @@ div.header > i {
   margin-bottom: 10px;
 }
 
-div.item > h6 {
+div > h6 {
   color: #6c757d;
+}
+
+.back-to-catalog-button {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.back-to-catalog-button > h6 {
+  margin: 0 0 0 10px;
+}
+
+.i-size {
+  font-size: 14px;
+}
+
+.detail-container {
+  border: 1px solid #6c757d;
+  border-radius: 5px;
+  padding: 25px;
+  background-color: white;
+}
+
+.detail-img {
+  height: 55vh;
+  object-fit: contain;
+}
+
+.long-description {
+  margin-top: 20px;
+  text-align: justify;
 }

@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   height: 100vh;
   background-color: #e9ecef;
@@ -15,10 +16,29 @@ body {
   font-weight: bold;
   padding: 15px 9rem;
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-div.header > i {
+div.website-title {
+  display: flex;
+  align-items: center;
+}
+
+div.website-title > i {
   margin-right: 15px;
+}
+
+.cart-container {
+  color: white;
+  margin: 0;
+  font-weight: 400;
+}
+
+.cart-container > i {
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .main {
@@ -83,4 +103,14 @@ div > h6 {
 .long-description {
   margin-top: 20px;
   text-align: justify;
+}
+
+.btn-color {
+  color: #3a506b;
+  border-color: #3a506b;
+}
+
+.btn-color:hover {
+  background-color: #3a506b;
+  border-color: #3a506b;
 }

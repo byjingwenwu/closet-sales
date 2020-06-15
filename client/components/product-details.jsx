@@ -4,6 +4,7 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = { product: null };
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -11,6 +12,12 @@ class ProductDetails extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({ product: data }))
       .catch(error => console.error(error));
+  }
+
+  handleAddToCart() {
+    const { productId, price } = this.state.product;
+    const product = { productId, price };
+    this.props.addToCart(product);
   }
 
   render() {
@@ -27,6 +34,7 @@ class ProductDetails extends React.Component {
                   <h3>{item.name}</h3>
                   <h6>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
                   <p>{item.shortDescription}</p>
+                  <button className="btn btn-outline-primary btn-color" onClick={this.handleAddToCart}>Add to Cart</button>
                 </div>
               </div>
               <div className="long-description">

@@ -13,12 +13,6 @@ app.use(sessionMiddleware);
 
 app.use(express.json());
 
-// app.get('/api/health-check', (req, res, next) => {
-//   db.query('select \'successfully connected\' as "message"')
-//     .then(result => res.json(result.rows[0]))
-//     .catch(err => next(err));
-// });
-
 // GET catalog
 app.get('/api/products', (req, res, next) => {
   const sql = `
@@ -140,6 +134,34 @@ app.post('/api/cart', (req, res, next) => {
         .then(result => {
           res.status(201).json(result.rows[0]);
         });
+    })
+    .catch(err => next(err));
+});
+
+// Checkout Cart
+app.post('/api/orders', (req, res, next) => {
+  if (!req.session.cartId) {
+    return next(new ClientError(`Cart ${req.session.cartId} is empty or not exist.`, 400));
+  }
+  if (!req.body.name) {
+    return next(new ClientError('Name is a required field.', 400));
+  }
+  if (!req.body.creditCard) {
+    return next(new ClientError('Credit card number is a required field.', 400));
+  }
+  if (!req.body.shippingAddress) {
+    return next(new ClientError('Shipping address is a required field.', 400));
+  }
+  const sql = `
+  INSERT INTO "orders" ("cartId", "name", "creditCard", "shippingAddress")
+  VALUES ($1, $2, $3, $4)
+  RETURNING *
+  `;
+  const values = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+  db.query(sql, values)
+    .then(result => {
+      res.status(201).json(result.rows[0]);
+      req.session.destroy();
     })
     .catch(err => next(err));
 });

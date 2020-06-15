@@ -27,14 +27,14 @@ export default class App extends React.Component {
   }
 
   getCartItem() {
-    fetch('api/cart')
+    fetch('/api/cart')
       .then(res => res.json())
       .then(data => this.setState({ cart: data }))
       .catch(error => console.error(error));
   }
 
   addToCart(product) {
-    fetch('api/cart', {
+    fetch('/api/cart', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(product)

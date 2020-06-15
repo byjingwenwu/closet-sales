@@ -9,7 +9,7 @@ function PageHeader(props) {
         <div>WICKED SALES</div>
       </div>
       <h6 className="cart-container">{`${itemNumber} items`}
-        <i className="fas fa-shopping-cart"></i></h6>
+        <i className="fas fa-shopping-cart" onClick={() => props.setView('cart', {})}></i></h6>
     </div>
   );
 }

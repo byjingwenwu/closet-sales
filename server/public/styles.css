@@ -114,3 +114,20 @@ div > h6 {
   background-color: #3a506b;
   border-color: #3a506b;
 }
+
+.cart-item-container {
+  border: 1px solid #6c757d;
+  border-radius: 5px;
+  padding: 25px;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.cart-img {
+  height: 250px;
+  object-fit: contain;
+}
+
+.cart-text-color {
+  color: #3a506b;
+}

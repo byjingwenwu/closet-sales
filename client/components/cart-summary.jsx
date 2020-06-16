@@ -32,7 +32,11 @@ class CartSummary extends React.Component {
             }
           </div>
         </div>
-        <h5 className="cart-text-color">{`Order Total: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalPrice / 100)}`}</h5>
+        <div className="d-flex align-items-center justify-content-between">
+          <h5 className="cart-text-color">{`Order Total: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalPrice / 100)}`}</h5>
+          <button className="btn btn-outline-primary btn-color"
+            onClick={() => this.props.setView('checkout', {})}>Checkout Order</button>
+        </div>
       </main>
     );
   }

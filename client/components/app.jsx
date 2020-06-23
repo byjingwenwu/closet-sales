@@ -3,6 +3,7 @@ import PageHeader from './page-header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItem = this.getCartItem.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -46,28 +48,47 @@ export default class App extends React.Component {
       .catch(error => console.error(error));
   }
 
+  placeOrder(order) {
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setView('checkout', {});
+        this.setState({ cart: [] });
+      })
+      .catch(error => console.error(error));
+  }
+
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <>
-          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView}/>
+          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
           <ProductList setView={this.setView} />
         </>
       );
     } else if (this.state.view.name === 'details') {
       return (
         <>
-          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView}/>
+          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
           <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart} />
         </>
       );
     } else if (this.state.view.name === 'cart') {
       return (
         <>
-          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView}/>
-          <CartSummary setView={this.setView} cart={this.state.cart}/>
+          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
+          <CartSummary setView={this.setView} cart={this.state.cart} />
         </>
+      );
+    } else if (this.state.view.name === 'checkout') {
+      return (
+        <CheckoutForm setView={this.setView} cart={this.state.cart} onSubmit={this.placeOrder}/>
       );
     }
   }
+
 }

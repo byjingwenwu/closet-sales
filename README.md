@@ -1,4 +1,4 @@
-# Wicked-Sales-JS
+# Closet Sales
 
 A full stack Node.js & React shopping cart app.
 

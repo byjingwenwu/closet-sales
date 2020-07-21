@@ -6,7 +6,7 @@ function PageHeader(props) {
     <div className="row col-12 header">
       <div className="website-title">
         <i className="fas fa-dollar-sign"></i>
-        <div>WICKED SALES</div>
+        <div>CLOSET SALES</div>
       </div>
       <h6 className="cart-container">{`${itemNumber} items`}
         <i className="fas fa-shopping-cart" onClick={() => props.setView('cart', {})}></i></h6>

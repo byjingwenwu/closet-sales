@@ -32,6 +32,7 @@ class ProductList extends React.Component {
                 key={item.productId}
                 productId={item.productId}
                 name={item.name}
+                brand={item.brand}
                 price={item.price}
                 image={item.image}
                 description={item.shortDescription}

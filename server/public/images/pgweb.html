@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8081/ -->
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>pgweb</title>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="en">
+  <link rel="stylesheet" href="./pgweb_files/bootstrap.css">
+  <link rel="stylesheet" href="./pgweb_files/font-awesome.css">
+  <link rel="stylesheet" href="./pgweb_files/app.css">
+  <link rel="icon" type="image/x-icon" href="http://localhost:8081/static/img/icon.ico">
+  <script type="text/javascript" src="./pgweb_files/jquery.js.download"></script>
+  <script type="text/javascript" src="./pgweb_files/ace.js.download"></script><style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;direction: ltr;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;min-width: 100%;}.ace_dragging, .ace_dragging * {cursor: move !important;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;}.ace_text-input.ace_composition {background: #f8f8f8;color: #111;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;/* setting pointer-events: auto; on node under the mouse, which changesduring scroll, will break mouse wheel scrolling in Safari */pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0px;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: block;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}/*** Dark version for fold widgets*/.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+  <script type="text/javascript" src="./pgweb_files/ace-pgsql.js.download"></script>
+  <script type="text/javascript" src="./pgweb_files/bootstrap-contextmenu.js.download"></script>
+  <script type="text/javascript" src="./pgweb_files/utils.js.download"></script>
+  <script type="text/javascript" src="./pgweb_files/bootstrap3-typeahead.min.js.download"></script>
+  <script type="text/javascript" src="./pgweb_files/app.js.download"></script> 
+  <script type="text/javascript" src="./pgweb_files/base64.js.download"></script>
+<script src="./pgweb_files/theme-tomorrow.js.download"></script><style id="ace-tomorrow">.ace-tomorrow .ace_gutter {background: #f6f6f6;color: #4D4D4C}.ace-tomorrow .ace_print-margin {width: 1px;background: #f6f6f6}.ace-tomorrow {background-color: #FFFFFF;color: #4D4D4C}.ace-tomorrow .ace_cursor {color: #AEAFAD}.ace-tomorrow .ace_marker-layer .ace_selection {background: #D6D6D6}.ace-tomorrow.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #FFFFFF;}.ace-tomorrow .ace_marker-layer .ace_step {background: rgb(255, 255, 0)}.ace-tomorrow .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #D1D1D1}.ace-tomorrow .ace_marker-layer .ace_active-line {background: #EFEFEF}.ace-tomorrow .ace_gutter-active-line {background-color : #dcdcdc}.ace-tomorrow .ace_marker-layer .ace_selected-word {border: 1px solid #D6D6D6}.ace-tomorrow .ace_invisible {color: #D1D1D1}.ace-tomorrow .ace_keyword,.ace-tomorrow .ace_meta,.ace-tomorrow .ace_storage,.ace-tomorrow .ace_storage.ace_type,.ace-tomorrow .ace_support.ace_type {color: #8959A8}.ace-tomorrow .ace_keyword.ace_operator {color: #3E999F}.ace-tomorrow .ace_constant.ace_character,.ace-tomorrow .ace_constant.ace_language,.ace-tomorrow .ace_constant.ace_numeric,.ace-tomorrow .ace_keyword.ace_other.ace_unit,.ace-tomorrow .ace_support.ace_constant,.ace-tomorrow .ace_variable.ace_parameter {color: #F5871F}.ace-tomorrow .ace_constant.ace_other {color: #666969}.ace-tomorrow .ace_invalid {color: #FFFFFF;background-color: #C82829}.ace-tomorrow .ace_invalid.ace_deprecated {color: #FFFFFF;background-color: #8959A8}.ace-tomorrow .ace_fold {background-color: #4271AE;border-color: #4D4D4C}.ace-tomorrow .ace_entity.ace_name.ace_function,.ace-tomorrow .ace_support.ace_function,.ace-tomorrow .ace_variable {color: #4271AE}.ace-tomorrow .ace_support.ace_class,.ace-tomorrow .ace_support.ace_type {color: #C99E00}.ace-tomorrow .ace_heading,.ace-tomorrow .ace_markup.ace_heading,.ace-tomorrow .ace_string {color: #718C00}.ace-tomorrow .ace_entity.ace_name.ace_tag,.ace-tomorrow .ace_entity.ace_other.ace_attribute-name,.ace-tomorrow .ace_meta.ace_tag,.ace-tomorrow .ace_string.ace_regexp,.ace-tomorrow .ace_variable {color: #C82829}.ace-tomorrow .ace_comment {color: #8E908C}.ace-tomorrow .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bdu3f/BwAlfgctduB85QAAAABJRU5ErkJggg==) right repeat-y}</style></head>
+<body cz-shortcut-listen="true">
+  <div id="main" style="display: block;">
+    <div id="nav">
+      <ul>
+        <li id="table_content" class="">Rows</li>
+        <li id="table_structure">Structure</li>
+        <li id="table_indexes">Indexes</li>
+        <li id="table_constraints">Constraints</li>
+        <li id="table_query" class="selected">Query</li>
+        <li id="table_history" class="">History</li>
+        <li id="table_activity">Activity</li>
+        <li id="table_connection">Connection</li>
+      </ul>
+
+      <div class="connection-actions" style="display: block;">
+        <a href="http://localhost:8081/#" id="edit_connection" class="btn btn-default btn-sm"><i class="fa fa-database"></i> Connect</a>
+        <a href="http://localhost:8081/#" id="close_connection" class="btn btn-default btn-sm">Disconnect</a>
+      </div>
+    </div>
+    <div id="sidebar">
+      <div class="current-database">
+        <div class="wrap">
+          <i class="fa fa-database"></i> <span class="current-database-name" id="current_database">wickedSales</span>
+          <input class="typeahead" id="database_search" type="text" placeholder="Search database">
+          <span class="refresh" id="refresh_tables" title="Refresh tables list"><i class="fa fa-refresh"></i></span>
+        </div>
+      </div>
+      <div class="objects-search">
+        <div class="wrap">
+          <i class="fa fa-search"></i>
+          <i class="fa fa-times-circle clear-objects-filter"></i>
+          <input type="text" placeholder="Filter database objects" id="filter_database_objects">
+        </div>
+      </div>
+      <div class="tables-list">
+        <div class="wrap">
+          <div id="objects"><div class="schema expanded"><div class="schema-name"><i class="fa fa-folder-o"></i><i class="fa fa-folder-open-o"></i> public</div><div class="schema-container"><div class="schema-group expanded"><div class="schema-group-title"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-down"></i> Tables <span class="schema-group-count">4</span></div><ul data-group="table"><li class="schema-item schema-table" data-type="table" data-id="public.cartItems" data-name="cartItems"><i class="fa fa-table"></i>&nbsp;cartItems</li><li class="schema-item schema-table" data-type="table" data-id="public.carts" data-name="carts"><i class="fa fa-table"></i>&nbsp;carts</li><li class="schema-item schema-table" data-type="table" data-id="public.orders" data-name="orders"><i class="fa fa-table"></i>&nbsp;orders</li><li class="schema-item schema-table active" data-type="table" data-id="public.products" data-name="products"><i class="fa fa-table"></i>&nbsp;products</li></ul></div><div class="schema-group "><div class="schema-group-title"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-down"></i> Views <span class="schema-group-count">0</span></div><ul data-group="view"></ul></div><div class="schema-group "><div class="schema-group-title"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-down"></i> Materialized Views <span class="schema-group-count">0</span></div><ul data-group="materialized_view"></ul></div><div class="schema-group "><div class="schema-group-title"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-down"></i> Sequences <span class="schema-group-count">4</span></div><ul data-group="sequence"><li class="schema-item schema-sequence" data-type="sequence" data-id="public.cartItems_cartItemId_seq" data-name="cartItems_cartItemId_seq"><i class="fa fa-circle-o"></i>&nbsp;cartItems_cartItemId_seq</li><li class="schema-item schema-sequence" data-type="sequence" data-id="public.carts_cartId_seq" data-name="carts_cartId_seq"><i class="fa fa-circle-o"></i>&nbsp;carts_cartId_seq</li><li class="schema-item schema-sequence" data-type="sequence" data-id="public.orders_orderId_seq" data-name="orders_orderId_seq"><i class="fa fa-circle-o"></i>&nbsp;orders_orderId_seq</li><li class="schema-item schema-sequence" data-type="sequence" data-id="public.products_productId_seq" data-name="products_productId_seq"><i class="fa fa-circle-o"></i>&nbsp;products_productId_seq</li></ul></div></div></div></div>
+        </div>
+      </div>
+      <div class="table-information">
+        <div class="wrap">
+          <div class="title">Table Information</div>
+          <div class="lines" style="display: block;">
+            <div class="line">Size: <span id="table_total_size">64 kB</span></div>
+            <div class="line">Data size: <span id="table_data_size">48 kB</span></div>
+            <div class="line">Index size: <span id="table_index_size">16 kB</span></div>
+            <div class="line">Estimated rows: <span id="table_rows_count">0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="body" class="">
+      <div id="input" style="display: block;">
+        <div class="wrapper">
+          <div id="custom_query" class=" ace_editor ace-tomorrow ace_focus" style="font-size: 13px;" draggable="false"><textarea class="ace_text-input" wrap="off" autocapitalize="off" spellcheck="false" style="opacity: 0; height: 15.2px; width: 7.15px; right: 700.3px; bottom: 162.6px;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px; height: 206.4px; width: 41px;"><div class="ace_gutter-cell " style="height: 15.2px;">1</div><div class="ace_gutter-cell " style="height: 15.2px;">2</div><div class="ace_gutter-cell " style="height: 15.2px;">3</div></div><div class="ace_gutter-active-line" style="top: 15.2px; height: 15.2px;"></div></div><div class="ace_scroller" style="left: 41px; right: 0px; bottom: 17px;"><div class="ace_content" style="margin-top: 0px; width: 1481px; height: 206.4px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 576px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height:15.199999809265137px;top:15.199999809265137px;left:0;right:0;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:15.199999809265137px"><span class="ace_keyword ace_statementBegin">update</span>&nbsp;<span class="ace_variable ace_language">"products"</span></div><div class="ace_line" style="height:15.199999809265137px"><span class="ace_indent-guide">&nbsp;&nbsp;</span>&nbsp;<span class="ace_keyword">set</span>&nbsp;<span class="ace_variable ace_language">"shortDescription"</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_string">'Elegant&nbsp;mint&nbsp;hue&nbsp;of&nbsp;Acne&nbsp;Studios&nbsp;canvas&nbsp;blazer&nbsp;tailored&nbsp;in&nbsp;a&nbsp;boxy&nbsp;silhouette,&nbsp;it&nbsp;has&nbsp;sharp&nbsp;peak&nbsp;lapels&nbsp;and&nbsp;is&nbsp;traced&nbsp;through&nbsp;the&nbsp;double&nbsp;breasted&nbsp;front&nbsp;with&nbsp;pearlescent&nbsp;buttons.'</span></div><div class="ace_line" style="height:15.199999809265137px">&nbsp;<span class="ace_keyword">where</span>&nbsp;<span class="ace_variable ace_language">"productId"</span>&nbsp;<span class="ace_keyword ace_operator">=</span>&nbsp;<span class="ace_constant ace_numeric">1</span><span class="ace_statementEnd">;</span></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer"><div class="ace_cursor" style="left: 554.55px; top: 15.2px; width: 7.15px; height: 15.2px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 17px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 45.6px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="height: 22px; left: 41px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 1481px;"></div></div><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">X</div></div></div>
+          <div class="actions">
+            <input type="button" id="run" value="Run Query" class="btn btn-sm btn-primary" title="Shortcut: Ctrl+Enter">
+            <input type="button" id="explain" value="Explain Query" class="btn btn-sm btn-default" title="Shortcut: Ctrl+E">
+            <div id="query_progress" style="display: none;">Please wait, query is executing...</div>
+            <div class="pull-right">
+              <span id="result-rows-count">1 rows</span>
+              <input type="button" id="json" value="JSON" class="btn btn-sm btn-default">
+              <input type="button" id="csv" value="CSV" class="btn btn-sm btn-default">
+              <input type="button" id="xml" value="XML" class="btn btn-sm btn-default">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="output">
+        <div class="wrapper">
+          <table id="results" class="table">
+            <thead id="results_header"><th class="table-header-col" data-name="Rows Affected">Rows Affected</th></thead>
+            <tbody id="results_body"><tr><td data-col="0"><div>1</div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="pagination">
+        <form class="filters" action="http://localhost:8081/#" id="rows_filter">
+          <span>Search</span>
+          <select class="column form-control"><option value="" selected="">Select column</option><option value="productId">productId</option><option value="name">name</option><option value="price">price</option><option value="image">image</option><option value="shortDescription">shortDescription</option><option value="longDescription">longDescription</option><option value="brand">brand</option></select>
+          <select class="filter form-control">
+            <option value="">Select filter</option>
+            <option value="equal">=</option>
+            <option value="not_equal">≠</option>
+            <option value="greater">&gt;</option>
+            <option value="greater_eq">≥</option>
+            <option value="less">&lt;</option>
+            <option value="less_eq">≤</option>
+            <option value="like">LIKE</option>
+            <option value="ilike">ILIKE</option>
+            <option value="null">IS NULL</option>
+            <option value="not_null">NOT NULL</option>
+          </select>
+          <input type="text" class="form-control" placeholder="Filter value" id="table_filter_value">
+          <button class="btn btn-primary btn-sm apply-filters" type="submit">Apply</button>
+          <button class="btn btn-default btn-sm reset-filters"><i class="fa fa-times"></i></button>
+        </form>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn-sm prev-page" disabled=""><i class="fa fa-angle-left"></i></button>
+          <button type="button" class="btn btn-default btn-sm page change-limit" title="Click to change row limit">1 of 1</button>
+          <button type="button" class="btn btn-default btn-sm next-page" disabled=""><i class="fa fa-angle-right"></i></button>
+        </div>
+        <div class="current-page" data-page="1" data-pages="1">
+          <span id="total_records">8</span> rows
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="connection_window">
+    <div class="connection-settings">
+      <div class="header">
+        <h1>pgweb</h1>
+        <div class="version"></div>
+        <div class="update alert alert-warning"></div>
+      </div>
+
+      <form role="form" class="form-horizontal" id="connection_form">
+        <div class="text-center">
+          <div class="btn-group btn-group-sm connection-group-switch">
+            <button type="button" data="scheme" class="btn btn-default" id="connection_scheme">Scheme</button>
+            <button type="button" data="standard" class="btn btn-default active" id="connection_standard">Standard</button>
+            <button type="button" data="ssh" class="btn btn-default" id="connection_ssh">SSH</button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="connection-scheme-group">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label>Enter server URL scheme</label>
+              <input type="text" class="form-control" id="connection_url" name="url" autocomplete="off">
+              <p class="help-block">
+                URL format: postgres://user:password@host:port/db?sslmode=mode<br>
+                Read more on PostgreSQL <a href="https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING" target="_blank">connection string format</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="connection-standard-group">
+          <div class="form-group bookmarks">
+            <label class="col-sm-3 control-label">Bookmark</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="connection_bookmarks"></select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Host</label>
+            <div class="col-sm-7">
+              <input type="text" id="pg_host" class="form-control">
+            </div>
+            <div class="col-sm-2 no-left-padding">
+              <input type="text" id="pg_port" class="form-control" placeholder="5432">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Username</label>
+            <div class="col-sm-9">
+              <input type="text" id="pg_user" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" id="pg_password" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Database</label>
+            <div class="col-sm-9">
+              <input type="text" id="pg_db" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">SSL Mode</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="connection_ssl">
+                <option value="disable">disable</option>
+                <option value="require" selected="selected">require</option>
+                <option value="verify-full">verify-full</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="connection-ssh-group">
+          <hr>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">SSH Host</label>
+            <div class="col-sm-7">
+              <input type="text" id="ssh_host" class="form-control">
+            </div>
+            <div class="col-sm-2 no-left-padding">
+              <input type="text" id="ssh_port" class="form-control" placeholder="22">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">SSH User</label>
+            <div class="col-sm-9">
+              <input type="text" id="ssh_user" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">SSH Password</label>
+            <div class="col-sm-9">
+              <input type="password" id="ssh_password" class="form-control" placeholder="optional">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">SSH Key</label>
+            <div class="col-sm-9">
+              <input type="text" id="ssh_key" class="form-control" placeholder="optional">
+            </div>
+          </div>
+        </div>
+
+        <div id="connection_error" class="alert alert-danger"></div>
+
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn-block btn-primary open-connection">Connect</button>
+            <button type="button" id="close_connection_window" class="btn btn-block btn-default">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="tables_context_menu">
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="http://localhost:8081/#" data-action="copy">Copy Table Name</a></li>
+      <li class="divider"></li>
+      <li><a href="http://localhost:8081/#" data-action="export" data-format="json">Export to JSON</a></li>
+      <li><a href="http://localhost:8081/#" data-action="export" data-format="csv">Export to CSV</a></li>
+      <li><a href="http://localhost:8081/#" data-action="export" data-format="xml">Export to XML</a></li>
+      <li><a href="http://localhost:8081/#" data-action="dump">Export to SQL</a></li>
+      <li class="divider"></li>
+      <li><a href="http://localhost:8081/#" data-action="truncate">Truncate Table</a></li>
+      <li><a href="http://localhost:8081/#" data-action="delete">Delete Table</a></li>
+    </ul>
+  </div>
+  <div id="view_context_menu">
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="http://localhost:8081/#" data-action="copy">Copy View Name</a></li>
+      <li class="divider"></li>
+      <li><a href="http://localhost:8081/#" data-action="export" data-format="json">Export to JSON</a></li>
+      <li><a href="http://localhost:8081/#" data-action="export" data-format="csv">Export to CSV</a></li>
+      <li><a href="http://localhost:8081/#" data-action="export" data-format="xml">Export to XML</a></li>
+      <li class="divider"></li>
+      <li><a href="http://localhost:8081/#" data-action="delete">Delete View</a></li>
+    </ul>
+  </div>
+  <div id="current_database_context_menu">
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="http://localhost:8081/#" data-action="export">Export SQL dump</a></li>
+    </ul>
+  </div>
+  <div id="results_header_menu">
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="http://localhost:8081/#" data-action="unique_values" data-counts="false">Unique Values</a></li>
+      <li><a href="http://localhost:8081/#" data-action="unique_values" data-counts="true">Unique Values + Counts</a></li>
+      <li><a href="http://localhost:8081/#" data-action="num_stats">Numeric stats (min/max/avg)</a></li>
+      <li><a href="http://localhost:8081/#" data-action="copy_name">Copy Column Name</a></li>
+    </ul>
+  </div>
+  <div id="results_row_menu">
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="http://localhost:8081/#" data-action="copy_value">Copy Value</a></li>
+      <li><a href="http://localhost:8081/#" data-action="filter_by_value">Filter Rows By Value</a></li>
+    </ul>
+  </div>
+
+
+</body></html>

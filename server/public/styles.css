@@ -53,7 +53,7 @@ div.website-title > i {
 }
 
 .item-container {
-  width: 32%;
+  width: 24%;
   background-color: white;
   border: 1px solid #6c757d;
   border-radius: 5px;
@@ -89,6 +89,7 @@ div > h6 {
 }
 
 .detail-container {
+  height: 80vh;
   border: 1px solid #6c757d;
   border-radius: 5px;
   padding: 25px;
@@ -96,7 +97,6 @@ div > h6 {
 }
 
 .detail-img {
-  height: 55vh;
   object-fit: contain;
 }
 

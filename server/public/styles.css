@@ -100,9 +100,8 @@ div > h6 {
   object-fit: contain;
 }
 
-.long-description {
+.detail-list {
   margin-top: 20px;
-  text-align: justify;
 }
 
 .btn-color {

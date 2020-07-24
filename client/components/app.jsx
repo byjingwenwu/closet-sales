@@ -4,20 +4,23 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import AcceptModal from './accept-modal';
+import Footer from './footer';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       message: null,
-      isLoading: true,
       view: { name: 'catalog', params: {} },
-      cart: []
+      cart: [],
+      isChecked: false
     };
     this.setView = this.setView.bind(this);
     this.getCartItem = this.getCartItem.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.acceptCheck = this.acceptCheck.bind(this);
   }
 
   componentDidMount() {
@@ -62,33 +65,42 @@ export default class App extends React.Component {
       .catch(error => console.error(error));
   }
 
-  render() {
-    if (this.state.view.name === 'catalog') {
-      return (
-        <>
-          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
-          <ProductList setView={this.setView} />
-        </>
-      );
-    } else if (this.state.view.name === 'details') {
-      return (
-        <>
-          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
-          <ProductDetails productId={this.state.view.params.productId} setView={this.setView} addToCart={this.addToCart} />
-        </>
-      );
-    } else if (this.state.view.name === 'cart') {
-      return (
-        <>
-          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
-          <CartSummary setView={this.setView} cart={this.state.cart} />
-        </>
-      );
-    } else if (this.state.view.name === 'checkout') {
-      return (
-        <CheckoutForm setView={this.setView} cart={this.state.cart} onSubmit={this.placeOrder}/>
-      );
-    }
+  acceptCheck(accept) {
+    this.setState({ isChecked: accept });
   }
 
+  render() {
+    let pageElement = null;
+    switch (this.state.view.name) {
+      case ('catalog'):
+        pageElement = <ProductList setView={this.setView} />;
+        break;
+      case ('details'):
+        pageElement = <ProductDetails productId={this.state.view.params.productId}
+          setView={this.setView} addToCart={this.addToCart} />;
+        break;
+      case ('cart'):
+        pageElement = <CartSummary setView={this.setView} cart={this.state.cart} />;
+        break;
+      case ('checkout'):
+        pageElement = <CheckoutForm setView={this.setView}
+          cart={this.state.cart} onSubmit={this.placeOrder} />;
+        break;
+    }
+    return this.state.isChecked === false ? (
+      <>
+        <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
+        <AcceptModal handleAcceptCheck={this.acceptCheck} />
+        {pageElement}
+        <Footer/>
+      </>
+    )
+      : (
+        <>
+          <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
+          {pageElement}
+          <Footer />
+        </>
+      );
+  }
 }

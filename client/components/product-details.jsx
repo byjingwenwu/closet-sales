@@ -26,7 +26,7 @@ class ProductDetails extends React.Component {
       : (
         <>
           <main className="main">
-            <div className="back-to-catalog-button" onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i><h6>Back to Catalog</h6></div>
+            <div className="back-to-catalog-button mb-4" onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i><h6>Back to Catalog</h6></div>
             <div className="detail-container">
               <div className="d-flex flex-row h-100">
                 <img src={item.image} alt={item.name} className="col-4 detail-img h-100" />

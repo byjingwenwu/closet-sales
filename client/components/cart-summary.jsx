@@ -7,7 +7,7 @@ class CartSummary extends React.Component {
     const totalPrice = price.reduce((acc, cur) => acc + cur, 0);
     return this.props.cart.length === 0 ? (
       <main className="main">
-        <div className="back-to-catalog-button"
+        <div className="back-to-catalog-button mb-4"
           onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i>
           <h6>Back to Catalog</h6></div>
         <h3>My Cart</h3>
@@ -15,7 +15,7 @@ class CartSummary extends React.Component {
       </main>
     ) : (
       <main className="main">
-        <div className="back-to-catalog-button"
+        <div className="back-to-catalog-button mb-4"
           onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i>
           <h6>Back to Catalog</h6></div>
         <div>

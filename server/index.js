@@ -147,18 +147,30 @@ app.post('/api/orders', (req, res, next) => {
   if (!req.body.name) {
     return next(new ClientError('Name is a required field.', 400));
   }
+  if (!req.body.email) {
+    return next(new ClientError('Email is a required field.', 400));
+  }
+  if (!req.body.phone) {
+    return next(new ClientError('Phone is a required field.', 400));
+  }
   if (!req.body.creditCard) {
     return next(new ClientError('Credit card number is a required field.', 400));
+  }
+  if (!req.body.expirationDate) {
+    return next(new ClientError('Expiration date is a required field.', 400));
+  }
+  if (!req.body.cvv) {
+    return next(new ClientError('CVV is a required field.', 400));
   }
   if (!req.body.shippingAddress) {
     return next(new ClientError('Shipping address is a required field.', 400));
   }
   const sql = `
-  INSERT INTO "orders" ("cartId", "name", "creditCard", "shippingAddress")
-  VALUES ($1, $2, $3, $4)
+  INSERT INTO "orders" ("cartId", "name", "email", "phone", "creditCard", "expirationDate", "cvv", "shippingAddress")
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
   RETURNING *
   `;
-  const values = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+  const values = [req.session.cartId, req.body.name, req.body.email, req.body.phone, req.body.creditCard, req.body.expirationDate, req.body.cvv, req.body.shippingAddress];
   db.query(sql, values)
     .then(result => {
       delete req.session.cartId;

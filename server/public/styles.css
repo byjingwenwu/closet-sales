@@ -5,7 +5,6 @@
 
 body {
   height: 100vh;
-  background-color: #e9ecef;
 }
 
 .header {
@@ -45,7 +44,6 @@ div.website-title {
 }
 
 .main {
-  background-color: #e9ecef;
   padding: 2rem 9rem;
   min-height: 88vh;
 }
@@ -93,7 +91,7 @@ div > h6 {
 }
 
 .detail-container {
-  height: 80vh;
+  height: 75vh;
   border: 1px solid #5e6b73;
   border-radius: 5px;
   padding: 25px;
@@ -134,6 +132,28 @@ div > h6 {
 .cart-text-color {
   color: #5e6b73;
   margin: 0;
+}
+
+.checkout-form {
+  border: 1px solid #5e6b73;
+  border-radius: 5px;
+  padding: 30px;
+  background-color: white;
+}
+
+.checkout-list {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: rgba(192, 192, 192, 0.2);
+}
+
+.checkout-list-item {
+  background-color: white;
+  height: 12vh;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .start-modal {

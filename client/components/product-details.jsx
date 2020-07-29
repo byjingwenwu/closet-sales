@@ -1,10 +1,15 @@
 import React from 'react';
+import AddModal from './add-modal';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: null };
+    this.state = {
+      product: null,
+      showModal: false
+    };
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -20,13 +25,30 @@ class ProductDetails extends React.Component {
     this.props.addToCart(product);
   }
 
+  toggleModal() {
+    if (this.state.showModal) {
+      this.setState({ showModal: false });
+    } else {
+      this.setState({ showModal: true });
+    }
+  }
+
   render() {
     const item = this.state.product;
+    const modal = this.state.showModal
+      ? (
+        <AddModal
+          setView={this.props.setView}
+          toggleModal={this.toggleModal}
+          product={this.state.product} />
+      )
+      : '';
     return item === null ? (null)
       : (
         <>
           <main className="main">
             <div className="back-to-catalog-button mb-4" onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i><h6>Back to Catalog</h6></div>
+            {modal}
             <div className="detail-container">
               <div className="d-flex flex-row h-100">
                 <img src={item.image} alt={item.name} className="col-4 detail-img h-100" />
@@ -36,7 +58,9 @@ class ProductDetails extends React.Component {
                   <h6>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
                   <h6>{`Size: ${item.size}`}</h6>
                   <p>{item.shortDescription}</p>
-                  <button className="btn btn-outline-primary btn-color" onClick={this.handleAddToCart}>Add to Cart</button>
+                  <button className="btn btn-outline-primary btn-color"
+                    onClick={() => { this.handleAddToCart(); this.toggleModal(); }}
+                    data-toggle="modal">Add to Cart</button>
                   <ul className="detail-list">
                     {
                       item.details.map((detail, index) => {

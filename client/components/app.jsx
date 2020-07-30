@@ -21,6 +21,8 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.acceptCheck = this.acceptCheck.bind(this);
+    this.groupCartItem = this.groupCartItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +53,47 @@ export default class App extends React.Component {
       .catch(error => console.error(error));
   }
 
+  groupCartItem(cart) {
+    const array = [];
+    const cartArr = cart.reduce((output, income) => {
+      if (!output[income.productId]) { output[income.productId] = 0; }
+      output[income.productId]++;
+      return output;
+    }, {});
+
+    for (const item in cartArr) {
+      for (const n in cart) {
+        if (Number(item) === cart[n].productId) {
+          array.push({
+            productId: cart[n].productId,
+            name: cart[n].name,
+            price: cart[n].price,
+            image: cart[n].image,
+            shortDescription: cart[n].shortDescription,
+            quantity: cartArr[item]
+          });
+          break;
+        }
+      }
+    }
+    return array;
+  }
+
+  deleteItem(id) {
+    fetch('/api/cart', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId: id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        const array = this.state.cart;
+        const newCart = array.filter(item => item.productId !== data.productId);
+        this.setState({ cart: newCart });
+      })
+      .catch(error => console.error(error));
+  }
+
   placeOrder(order) {
     fetch('/api/orders', {
       method: 'POST',
@@ -71,6 +114,7 @@ export default class App extends React.Component {
 
   render() {
     let pageElement = null;
+    const cart = this.state.cart;
     switch (this.state.view.name) {
       case ('catalog'):
         pageElement = <ProductList setView={this.setView} />;
@@ -80,19 +124,26 @@ export default class App extends React.Component {
           setView={this.setView} addToCart={this.addToCart} />;
         break;
       case ('cart'):
-        pageElement = <CartSummary setView={this.setView} cart={this.state.cart} />;
+        pageElement = <CartSummary
+          setView={this.setView}
+          cart={cart}
+          groupCartItem={this.groupCartItem(cart)}
+          deleteItem={this.deleteItem}/>;
         break;
       case ('checkout'):
-        pageElement = <CheckoutForm setView={this.setView}
-          cart={this.state.cart} onSubmit={this.placeOrder} />;
+        pageElement = <CheckoutForm
+          setView={this.setView}
+          cart={cart}
+          onSubmit={this.placeOrder}
+          groupCartItem={this.groupCartItem(cart)}/>;
         break;
     }
     return this.state.isChecked === false ? (
       <>
-        <PageHeader cartItemCount={this.state.cart.length} setView={this.setView} />
+        <PageHeader cartItemCount={cart.length} setView={this.setView} />
         <AcceptModal handleAcceptCheck={this.acceptCheck} />
         {pageElement}
-        <Footer/>
+        <Footer />
       </>
     )
       : (

@@ -1,17 +1,38 @@
 # Closet Sales
 
-A full stack Node.js & React shopping cart app.
+Closet Sales is an online marketplace where people can buy my authenticated new or used clothing, shoes, and accessories.
+
+## Technologies Used
+- React.js
+- Express
+- Fetch
+- Webpack 4
+- Bootstrap 4
+- PostgreSQL
+- HTML5
+- CSS3
+- AWS EC2
+
+## Live Demo
+Link: (https://closet-sales.spacebyjingwen.com/)
 
 ## Features
+The application will provide the following functionality to its users. Where applicable, each feature is divided into "front end" and "back end" implementations during creation.
 
-The application will provide the following functionality to its users. Where applicable, each feature is divided into "front end" and "back end" implementations. For each feature, the "back end" implementation should be completed first.
+1. On client side:
+   - view the products for sale
+   - view the details of a product
+   - add the product to their cart
+   - view the product in the cart
+   - remove product from the cart
+   - place an order via submitting order form
+2. The server can process data:
+   - to view product
+   - to view single product with detail
+   - to add a product to the cart
+   - to view the product(s) in the cart
+   - to remove the product from the cart
+   - to receive and place the order
 
-1. User can view the products for sale - Back End.
-2. User can view the products for sale - Front End.
-3. User can view the details of a product - Back End.
-4. User can view the details of a product - Front End.
-5. User can add a product to their cart - Back End.
-6. User can add a product to their cart - Front End.
-7. User can view their cart summary - Front End.
-8. User can place an order - Back End.
-9. User can place an order - Front End.
+## Preview
+<img src="server/public/images/preview.png">

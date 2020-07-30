@@ -415,13 +415,14 @@ class CheckoutForm extends React.Component {
         <div className="col-3 pr-0">
           <div className="checkout-list">
             {
-              this.props.cart.map(item => {
+              this.props.groupCartItem.map(item => {
                 return (
-                  <div key={item.productId} className="d-flex justify-content-between checkout-list-item mb-4">
+                  <div key={item.productId} className="d-flex justify-content-between checkout-list-item m-4">
                     <img src={item.image} alt={item.name} className="col-md-5 detail-img" />
-                    <div className="col-md-7">
-                      <h6>{item.name}</h6>
-                      <h6>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
+                    <div className="col-md-7 d-flex flex-column justify-content-center">
+                      <h6 className="fontsize-14">{item.name}</h6>
+                      <h6 className="theme-color fontsize-14">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
+                      <h6 className="theme-color fontsize-14">{`Quantity: ${item.quantity}`}</h6>
                     </div>
                   </div>
                 );

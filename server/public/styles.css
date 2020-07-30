@@ -70,10 +70,6 @@ div.website-title {
   margin-bottom: 10px;
 }
 
-div > h6 {
-  color: #5e6b73;
-}
-
 .back-to-catalog-button {
   cursor: pointer;
   display: flex;
@@ -144,7 +140,6 @@ div > h6 {
 .checkout-list {
   border: 1px solid #c4c4c4;
   border-radius: 5px;
-  padding: 20px;
   background-color: rgba(192, 192, 192, 0.2);
 }
 
@@ -180,4 +175,8 @@ div > h6 {
 
 .theme-color {
   color: #5e6b73;
+}
+
+.fontsize-14 {
+  font-size: 14px;
 }

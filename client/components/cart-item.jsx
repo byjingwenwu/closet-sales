@@ -9,8 +9,9 @@ class CartItem extends React.Component {
           <img src={item.image} alt={item.name} className="col-sm-6 cart-img"/>
           <div>
             <h4>{item.name}</h4>
-            <h6>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
+            <h6 className="theme-color">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
             <p>{item.description}</p>
+            <h6 className="theme-color">{`Quantity: ${item.quantity}`}</h6>
           </div>
         </div>
       </>

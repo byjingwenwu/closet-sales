@@ -53,10 +53,10 @@ class ProductDetails extends React.Component {
               <div className="d-flex flex-row h-100">
                 <img src={item.image} alt={item.name} className="col-4 detail-img h-100" />
                 <div className="col-8">
-                  <h6>{item.brand}</h6>
+                  <h6 className="theme-color">{item.brand}</h6>
                   <h3>{item.name}</h3>
-                  <h6>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
-                  <h6>{`Size: ${item.size}`}</h6>
+                  <h6 className="theme-color">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price / 100)}</h6>
+                  <h6 className="theme-color">{`Size: ${item.size}`}</h6>
                   <p>{item.shortDescription}</p>
                   <button className="btn btn-outline-primary btn-color"
                     onClick={() => { this.handleAddToCart(); this.toggleModal(); }}

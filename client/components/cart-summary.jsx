@@ -22,12 +22,13 @@ class CartSummary extends React.Component {
           <h3>My cart</h3>
           <div>
             {
-              this.props.cart.map(item => {
+              this.props.groupCartItem.map(item => {
                 return <CartItem key={item.productId}
                   name={item.name}
                   price={item.price}
                   image={item.image}
-                  description={item.shortDescription} />;
+                  description={item.shortDescription}
+                  quantity={item.quantity}/>;
               })
             }
           </div>

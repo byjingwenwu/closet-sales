@@ -3,8 +3,6 @@ import React from 'react';
 class CartItem extends React.Component {
   render() {
     const item = this.props;
-    // const productId = item.productId;
-    // const removeItem = { productId };
     return (
       <>
         <div className="d-flex mb-4 cart-item-container">

@@ -13,9 +13,6 @@ Closet Sales is an online marketplace where people can buy my authenticated new 
 - CSS3
 - AWS EC2
 
-## Live Demo
-Link: https://closet-sales.spacebyjingwen.com/
-
 ## Features
 The application will provide the following functionality to its users. Where applicable, each feature is divided into "front end" and "back end" implementations.
 
@@ -33,6 +30,9 @@ The application will provide the following functionality to its users. Where app
    - to view the product(s) in the cart
    - to remove the product from the cart
    - to receive and place the order
+
+## Live Demo
+Link: https://closet-sales.spacebyjingwen.com/
 
 ## Preview
 <img src="server/public/images/preview.png">

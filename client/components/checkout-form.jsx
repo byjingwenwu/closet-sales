@@ -169,6 +169,7 @@ class CheckoutForm extends React.Component {
         <div className="col-8 checkout-form" >
           <div className="back-to-catalog-button mb-4" onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i><h6>Continue Shopping</h6></div>
           <h3>My cart</h3>
+          <p className="mb-4 warning-color">Warning: This website is for demonstration purposes only.<br/>Please do not use real personal information such as names, addresses and credit card numbers for this checkout form.</p>
           <h5 className="cart-text-color mb-4">{`Order Total: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalPrice / 100)}`}</h5>
           <form onSubmit={() => this.handleSubmit(event)}>
             <h5 className="mb-3">Shipping/Billing information</h5>

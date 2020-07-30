@@ -177,6 +177,10 @@ div.website-title {
   color: #5e6b73;
 }
 
+.warning-color {
+  color :red;
+}
+
 .fontsize-14 {
   font-size: 14px;
 }

@@ -24,11 +24,13 @@ class CartSummary extends React.Component {
             {
               this.props.groupCartItem.map(item => {
                 return <CartItem key={item.productId}
+                  productId={item.productId}
                   name={item.name}
                   price={item.price}
                   image={item.image}
                   description={item.shortDescription}
-                  quantity={item.quantity}/>;
+                  quantity={item.quantity}
+                  deleteItem={this.props.deleteItem}/>;
               })
             }
           </div>

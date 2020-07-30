@@ -22,6 +22,7 @@ export default class App extends React.Component {
     this.placeOrder = this.placeOrder.bind(this);
     this.acceptCheck = this.acceptCheck.bind(this);
     this.groupCartItem = this.groupCartItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   componentDidMount() {
@@ -52,24 +53,6 @@ export default class App extends React.Component {
       .catch(error => console.error(error));
   }
 
-  placeOrder(order) {
-    fetch('/api/orders', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(order)
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setView('checkout', {});
-        this.setState({ cart: [] });
-      })
-      .catch(error => console.error(error));
-  }
-
-  acceptCheck(accept) {
-    this.setState({ isChecked: accept });
-  }
-
   groupCartItem(cart) {
     const array = [];
     const cartArr = cart.reduce((output, income) => {
@@ -96,6 +79,39 @@ export default class App extends React.Component {
     return array;
   }
 
+  deleteItem(id) {
+    fetch('/api/cart', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId: id })
+    })
+      .then(res => res.json())
+      .then(data => {
+        const array = this.state.cart;
+        const newCart = array.filter(item => item.productId !== data.productId);
+        this.setState({ cart: newCart });
+      })
+      .catch(error => console.error(error));
+  }
+
+  placeOrder(order) {
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setView('checkout', {});
+        this.setState({ cart: [] });
+      })
+      .catch(error => console.error(error));
+  }
+
+  acceptCheck(accept) {
+    this.setState({ isChecked: accept });
+  }
+
   render() {
     let pageElement = null;
     const cart = this.state.cart;
@@ -111,7 +127,8 @@ export default class App extends React.Component {
         pageElement = <CartSummary
           setView={this.setView}
           cart={cart}
-          groupCartItem={this.groupCartItem(cart)}/>;
+          groupCartItem={this.groupCartItem(cart)}
+          deleteItem={this.deleteItem}/>;
         break;
       case ('checkout'):
         pageElement = <CheckoutForm

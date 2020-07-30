@@ -139,6 +139,33 @@ app.post('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// DELETE item from Cart
+app.delete('/api/cart', (req, res, next) => {
+  if (!req.session.cartId) {
+    return next(new ClientError('This shopping cart is empty.', 400));
+  }
+  if (!req.body.productId) {
+    return next(new ClientError('"productId" is required.', 400));
+  }
+  const sql = `
+    DELETE FROM "cartItems"
+    WHERE "cartItemId"
+    IN (
+      SELECT "cartItemId"
+      FROM "cartItems"
+      WHERE "cartId" = $1
+      AND "productId" = $2
+    )
+    RETURNING *
+  `;
+  const values = [req.session.cartId, req.body.productId];
+  db.query(sql, values)
+    .then(result => {
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 // Checkout Cart
 app.post('/api/orders', (req, res, next) => {
   if (!req.session.cartId) {

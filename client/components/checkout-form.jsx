@@ -413,7 +413,7 @@ class CheckoutForm extends React.Component {
             <button className="btn btn-outline-primary btn-color mt-3" type="submit">Place Order</button>
           </form>
         </div>
-        <div className="col-3 pr-0">
+        <div className="col-4 ml-5 pr-0">
           <div className="checkout-list">
             {
               this.props.groupCartItem.map(item => {

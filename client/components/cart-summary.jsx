@@ -10,7 +10,7 @@ class CartSummary extends React.Component {
         <div className="back-to-catalog-button mb-4"
           onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i>
           <h6>Back to Catalog</h6></div>
-        <h3>My Cart</h3>
+        <h3>Shopping Cart</h3>
         <h5 className="cart-text-color">Your cart is empty.</h5>
       </main>
     ) : (
@@ -18,27 +18,26 @@ class CartSummary extends React.Component {
         <div className="back-to-catalog-button mb-4"
           onClick={() => this.props.setView('catalog', {})}><i className="fas fa-undo i-size"></i>
           <h6>Back to Catalog</h6></div>
-        <div>
-          <h3>My cart</h3>
-          <div>
-            {
-              this.props.groupCartItem.map(item => {
-                return <CartItem key={item.productId}
-                  productId={item.productId}
-                  name={item.name}
-                  price={item.price}
-                  image={item.image}
-                  description={item.shortDescription}
-                  quantity={item.quantity}
-                  deleteItem={this.props.deleteItem}/>;
-              })
-            }
-          </div>
+        <h3>Shopping Cart</h3>
+        <div className="mt-4 mb-4 d-flex flex-wrap">
+          {
+            this.props.groupCartItem.map(item => {
+              return <CartItem key={item.productId}
+                productId={item.productId}
+                name={item.name}
+                price={item.price}
+                image={item.image}
+                quantity={item.quantity}
+                deleteItem={this.props.deleteItem}/>;
+            })
+          }
         </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <h5 className="cart-text-color">{`Order Total: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalPrice / 100)}`}</h5>
-          <button className="btn btn-outline-primary btn-color"
-            onClick={() => this.props.setView('checkout', {})}>Checkout Order</button>
+        <div className="d-flex align-items-center justify-content-end fixed-bottom checkout-sum">
+          <h5 className="theme-color col-4 text-center p-0">{`ORDER TOTAL: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalPrice / 100)}`}</h5>
+          <div className="col-4 text-right">
+            <button className="btn btn-outline-primary btn-color "
+              onClick={() => this.props.setView('checkout', {})}>Checkout Order</button>
+          </div>
         </div>
       </main>
     );

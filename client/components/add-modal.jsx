@@ -16,7 +16,7 @@ function AddModal(props) {
         </div>
         <div className="modal-footer justify-content-center">
           <button className="btn btn-outline-primary btn-color mt-3"
-            onClick={() => props.setView('catalog', {})}>Continue Shoppping</button>
+            onClick={() => props.setView('catalog', {})}>Back to Catalog</button>
           <button className="btn btn-outline-primary btn-color ml-4 mt-3"
             onClick={() => props.setView('cart', {})}>View Cart</button>
         </div>
